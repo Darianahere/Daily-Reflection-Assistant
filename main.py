@@ -50,11 +50,11 @@ def run_prompt(prompt_id: str, inputs: Dict[str, str]) -> Generator[str, None, s
 def main():
      st.title("Your Daily Reflection Assistant")
      if "messages" not in st.session_state:
-          st.session_state.messages = []
+          st.session_state.messages = [{"role": "assistant", "content": "Hi! I'm Amazonia"}]
      for message in st.session_state.messages:
           with st.chat_message(message["role"]):
                st.markdown(message["content"])
-     if prompt := st.chat_input("HI! I'm Amazonia and I will help you reflect on your feelings during the day. Tell me what happened and how you're feeling today"):
+     if prompt := st.chat_input("Write your message here"):
           st.session_state.messages.append({"role": "user", "content": prompt})
           with st.chat_message("user"):
                st.markdown(prompt)
@@ -68,5 +68,6 @@ def main():
                     message_placeholder.markdown(full_response + "▌")
                message_placeholder.markdown(full_response)
           st.session_state.messages.append({"role": "assistant", "content": full_response})
-     if __name__ == '__main__':
-          main()
+
+if __name__ == '__main__':
+    main()
