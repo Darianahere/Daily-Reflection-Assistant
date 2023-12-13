@@ -50,7 +50,7 @@ def run_prompt(prompt_id: str, inputs: Dict[str, str]) -> Generator[str, None, s
 def main():
      st.title("Your Daily Reflection Assistant")
      if "messages" not in st.session_state:
-          st.session_state.messages = [{"role": "assistant", "content": "Hi! I'm Amazonia"}]
+          st.session_state.messages = [{"role": "assistant", "content": "Hi! I'm Amazonia, your daily reflection assistant. Tell me what happened today and how you felt"}]
      for message in st.session_state.messages:
           with st.chat_message(message["role"]):
                st.markdown(message["content"])
